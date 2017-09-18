@@ -1,12 +1,31 @@
 <div class="main-container">
-  <div class="alert alert-app-level">Some alert</div>
+    <div class="header header-3">
+        <div class="branding" routerLink="/">
+            <div class="title">Daniel Furtlehner</div>
+        </div>
 
-  <div class="header header-6"></div>
+        <div class="header-nav">
+            <a routerLink="/aboutme" routerLinkActive="active" class="nav-link nav-text">Über Mich</a>
+            <a href="https://github.com/furti" target="_blank" class="nav-link nav-text">Github</a>
+        </div>
 
-  <div class="content-container">
-    <div class="content-area" style.background="red">
-      Some content
+        <div class="header-actions">
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger>
+                        <clr-icon shape="user"></clr-icon>
+                        <clr-icon shape="caret down"></clr-icon>
+                    </button>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <a href="javascript://" clrDropdownItem>Anmelden</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
     </div>
-  </div>
+
+    <div class="content-container">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 
 </div>
