@@ -1,0 +1,30 @@
+<div class="login-wrapper">
+    <form class="login" [formGroup]="loginForm" novalidate>
+        <label class="title">
+            Melde dich an um mehr Informationen zu sehen
+            <h5 class="hint">Du hast keine Zugangsdaten? Macht nichts. Du kannst viele Informationen auch ohne Anmdeldung sehen.</h5>
+        </label>
+        <div class="login-group">
+            <label for="username" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="usernameInvalid && submitTried">
+                <input class="username" type="text" id="username" formControlName="username" placeholder="Username" autocomplete="off">
+                <span class="tooltip-content">
+                    Bitte gib deinen Benutzernamen ein
+                </span>
+            </label>
+
+            <label for="password" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="passwordInvalid && submitTried">
+                    <input class="password" type="password" id="password" formControlName="password" placeholder="Password">
+                    <span class="tooltip-content">
+                        Bitte gib dein Passwort ein
+                    </span>
+                </label>
+
+
+            <div class="error active">
+                Derzeit ist die Anmeldung noch nicht möglich.
+            </div>
+
+            <button (click)="login()" type="submit" class="btn btn-primary">Anmelden</button>
+        </div>
+    </form>
+</div>
