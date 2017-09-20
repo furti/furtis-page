@@ -1,0 +1,6 @@
+.login-wrapper {
+    background: url('../../assets/login_image.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 504px 0;
+}

@@ -2,13 +2,10 @@
 @import "../node_modules/clarity-ui/clarity-ui.min.css";
 @import "../node_modules/clarity-icons/clarity-icons.min.css";
 
-div:focus, a:focus, button:focus {
-    outline: 1px dashed #CFC8BD;
+.content-area {
+    position: relative;
 }
 
-.login-wrapper {
-    background: url('./assets/login_image.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 504px 0;
+div:focus, a:focus, button:focus {
+    outline: 1px dashed #CFC8BD;
 }

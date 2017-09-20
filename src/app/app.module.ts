@@ -7,12 +7,16 @@ import { ClarityModule } from 'clarity-angular';
 import { AppComponent } from './app.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { DividerComponent } from './divider/divider.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutMeComponent,
-        LoginComponent
+        LoginComponent,
+        HomeComponent,
+        DividerComponent
     ],
     imports: [
         BrowserModule,

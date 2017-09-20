@@ -1,0 +1,14 @@
+.divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 36px;
+}
+
+.point {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #919FA8;
+    margin: 0 5px;
+}
