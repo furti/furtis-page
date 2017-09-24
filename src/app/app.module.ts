@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { DividerComponent } from './divider/divider.component';
 import { HttpmockModule } from './httpmock/httpmock.module';
 import { ErrorHandler } from './error-handler.service';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { ErrorHandler } from './error-handler.service';
         AboutMeComponent,
         LoginComponent,
         HomeComponent,
-        DividerComponent
+        DividerComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,
