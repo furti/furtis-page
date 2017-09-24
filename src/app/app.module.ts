@@ -13,6 +13,7 @@ import { DividerComponent } from './divider/divider.component';
 import { HttpmockModule } from './httpmock/httpmock.module';
 import { ErrorHandler } from './error-handler.service';
 import { LoadingComponent } from './loading/loading.component';
+import { SectionCardComponent } from './section-card/section-card.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { LoadingComponent } from './loading/loading.component';
         LoginComponent,
         HomeComponent,
         DividerComponent,
-        LoadingComponent
+        LoadingComponent,
+        SectionCardComponent
     ],
     imports: [
         BrowserModule,

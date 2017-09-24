@@ -1,1 +1,5 @@
-<pre>{{sections | json}}</pre>
+<fuu-loading *ngIf="!sections"></fuu-loading>
+
+<div class="card-columns card-columns-2" *ngIf="sections">
+    <fuu-section-card *ngFor="let section of sections" [section]="section"></fuu-section-card>
+</div>
