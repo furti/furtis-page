@@ -14,6 +14,27 @@
             "title": "Meine Projekte",
             "contentType": "PROJECT_LIST",
             "snippetText": "Eine Liste der Projekte die ich bis heute umgesetzt oder begonnen habe. Vielleicht ist ja was dabei das dich interressiert."
+        },
+        {
+            "id": 3,
+            "sortOrder": 3,
+            "title": "Stärken und Schwächen",
+            "contentType": "PROJECT_LIST",
+            "snippetText": "Hier gibts infos darüber was ich besonders gut kann und wo es noch aufholbedarf gibt."
+        },
+        {
+            "id": 4,
+            "sortOrder": 4,
+            "title": "Fähigkeiten und Kenntnisse",
+            "contentType": "PROJECT_LIST",
+            "snippetText": "Mit welchen Frameworks und tools kenne ich mich aus? Welche Technologien habe ich schon benutzt und gemeistert? Hier erfährst du mehr darüber."
+        },
+        {
+            "id": 5,
+            "sortOrder": 5,
+            "title": "Hobbys",
+            "contentType": "PROJECT_LIST",
+            "snippetText": "Arbeit ist nicht alles. Was macht mir neben dem Entwickeln sonst noch Spaß?"
         }
     ]
 }
