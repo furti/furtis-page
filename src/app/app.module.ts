@@ -14,6 +14,7 @@ import { HttpmockModule } from './httpmock/httpmock.module';
 import { ErrorHandler } from './error-handler.service';
 import { LoadingComponent } from './loading/loading.component';
 import { SectionCardComponent } from './section-card/section-card.component';
+import { ProfileImageComponent } from './profile-image/profile-image.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { SectionCardComponent } from './section-card/section-card.component';
         HomeComponent,
         DividerComponent,
         LoadingComponent,
-        SectionCardComponent
+        SectionCardComponent,
+        ProfileImageComponent
     ],
     imports: [
         BrowserModule,

@@ -27,13 +27,6 @@
     width: 100%;
 }
 
-.welcome-image-wrapper {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    background: #D9E4EA;
-    margin: 24px;
-}
 .welcome-text h1, .welcome-text h3 {
     color: #FFFFFF;
     padding: 0px;

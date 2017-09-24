@@ -1,0 +1,22 @@
+:host {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background: #D9E4EA;
+    margin: 24px;
+}
+
+:host([type="branding"]) {
+    height: 36px;
+    width: 36px;
+    margin: 12px;
+}
+
+.profile-image {
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/me_200.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+}
