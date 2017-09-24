@@ -1,0 +1,13 @@
+{
+    "title": "SectionsData",
+    "type": "object",
+    "properties": {
+        "data": {
+            "title": "SectionsArray",
+            "type": "array",
+            "items": {
+                "$ref": "section.schema.json"
+            }
+        }
+    }
+}
