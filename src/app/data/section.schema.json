@@ -19,6 +19,9 @@
         },
         "sortOrder": {
             "type": "number"
+        },
+        "image": {
+            "type": "string"
         }
     },
     "required": [

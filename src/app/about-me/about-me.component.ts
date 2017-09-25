@@ -20,7 +20,14 @@ export class AboutMeComponent implements OnInit
         this.httpClient.get('/api/sections')
             .subscribe(data =>
             {
-                this.sections = data['data'] as Section[];
+                let sectionArray = data['data'] as Section[];
+
+                sectionArray = sectionArray.sort((s1, s2) =>
+                {
+                    return s1.sortOrder - s2.sortOrder;
+                });
+
+                this.sections = sectionArray;
             }, (err: HttpErrorResponse) =>
             {
                 this.errorHandler.handleError(err);

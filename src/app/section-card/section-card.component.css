@@ -1,0 +1,13 @@
+.card-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.card-block img {
+    height: 200px;
+    margin-right: 24px;
+    background: #F4F1E6;
+    border-radius: 6px;
+}

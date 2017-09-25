@@ -21,6 +21,14 @@ export interface Section
     title: string;
 
     /**
+     * The image to display in the overview
+     *
+     * @type {string}
+     * @memberof Section
+     */
+    image: string;
+
+    /**
      * The type of section data to display when a user clicks on the section.
      *
      * @type {SectionContentType}

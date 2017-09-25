@@ -6,11 +6,12 @@
             "sortOrder": 1,
             "title": "Lebenslauf",
             "contentType": "CV",
+            "image": "/assets/cv_overview.png",
             "snippetText": "Hier erfährst du, in umgekehrt chronologischer Reihenfolge, was in meinem Leben so alles passiert ist und wie ich zu dem geworden bin der ich heute bin."
         },
         {
             "id": 2,
-            "sortOrder": 2,
+            "sortOrder": 4,
             "title": "Meine Projekte",
             "contentType": "PROJECT_LIST",
             "snippetText": "Eine Liste der Projekte die ich bis heute umgesetzt oder begonnen habe. Vielleicht ist ja was dabei das dich interressiert."
@@ -24,10 +25,11 @@
         },
         {
             "id": 4,
-            "sortOrder": 4,
+            "sortOrder": 2,
             "title": "Fähigkeiten und Kenntnisse",
+            "image": "/assets/skills_overview.png",
             "contentType": "PROJECT_LIST",
-            "snippetText": "Mit welchen Frameworks und tools kenne ich mich aus? Welche Technologien habe ich schon benutzt und gemeistert? Hier erfährst du mehr darüber."
+            "snippetText": "Mit welchen Frameworks und Tools kenne ich mich aus? Welche Technologien habe ich schon benutzt und gemeistert? Hier erfährst du mehr darüber."
         },
         {
             "id": 5,
