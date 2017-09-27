@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ErrorHandlerService } from './error-handler.service';
+import { ErrorHandler } from './error-handler.service';
 
 describe('ErrorHandlerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ErrorHandlerService]
+      providers: [ErrorHandler]
     });
   });
 
-  it('should be created', inject([ErrorHandlerService], (service: ErrorHandlerService) => {
+  it('should be created', inject([ErrorHandler], (service: ErrorHandler) => {
     expect(service).toBeTruthy();
   }));
 });
