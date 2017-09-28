@@ -3,13 +3,13 @@ import { Observable } from 'rxjs/Observable';
 
 import { Section } from '../Section';
 
-import sections from '../data/sections.json';
+import { sections } from '../data/sections';
 
 export class InMemorySectionService implements InMemoryDbService
 {
     createDb(reqInfo?: RequestInfo): {} | Observable<{}> | Promise<{}>
     {
-        return { sections: sections.data };
+        return { sections: sections };
     }
 
 }
