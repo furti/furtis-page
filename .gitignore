@@ -2,6 +2,9 @@
 
 # compiled output
 /dist
+/aot
+/compiled
+/final
 /tmp
 /out-tsc
 
