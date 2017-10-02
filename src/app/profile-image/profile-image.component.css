@@ -12,6 +12,10 @@
     margin: 12px;
 }
 
+:host([type="branding"]) .profile-image {
+    background-image: url("../../assets/me_brand.png");
+}
+
 .profile-image {
     height: 100%;
     width: 100%;

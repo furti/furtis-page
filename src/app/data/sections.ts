@@ -12,15 +12,15 @@ export const sections: Section[] = [{
     sortOrder: 4,
     title: 'Meine Projekte',
     contentType: 'PROJECT_LIST',
-    image: '',
+    image: '/assets/projects_overview.png',
     snippetText: 'Eine Liste der Projekte die ich bis heute umgesetzt oder begonnen habe. Vielleicht ist ja was dabei das dich interressiert.'
 }, {
     id: 3,
     sortOrder: 3,
     title: 'Stärken und Schwächen',
     contentType: 'PROJECT_LIST',
-    image: '',
-    snippetText: 'Hier gibts infos darüber was ich besonders gut kann und wo es noch aufholbedarf gibt.'
+    image: '/assets/proscons_overview.png',
+    snippetText: 'Hier gibts infos darüber was ich besonders gut kann und wo es noch Aufholbedarf gibt.'
 },
 {
     id: 4,
@@ -35,6 +35,6 @@ export const sections: Section[] = [{
     sortOrder: 5,
     title: 'Hobbys',
     contentType: 'PROJECT_LIST',
-    image: '',
+    image: '/assets/hobbys_overview.png',
     snippetText: 'Arbeit ist nicht alles. Was macht mir neben dem Entwickeln sonst noch Spaß?'
 }];
