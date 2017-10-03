@@ -1,7 +1,7 @@
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { Observable } from 'rxjs/Observable';
 
-import { Section } from '../Section';
+import { Section } from '../data/Section';
 
 import { sections } from '../data/sections';
 

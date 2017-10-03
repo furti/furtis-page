@@ -1,4 +1,4 @@
-import { Section } from './../Section';
+import { Section } from './../data/Section';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

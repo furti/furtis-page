@@ -1,3 +1,4 @@
+import { SectionService } from './section.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { ErrorHandler } from './error-handler.service';
 import { LoadingComponent } from './loading/loading.component';
 import { SectionCardComponent } from './section-card/section-card.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
+import { SectionDetailComponent } from './section-detail/section-detail.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,8 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
         DividerComponent,
         LoadingComponent,
         SectionCardComponent,
-        ProfileImageComponent
+        ProfileImageComponent,
+        SectionDetailComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +38,7 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
         HttpClientModule,
         HttpmockModule
     ],
-    providers: [ErrorHandler],
+    providers: [ErrorHandler, SectionService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

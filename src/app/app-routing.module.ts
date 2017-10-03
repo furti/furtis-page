@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { SectionDetailComponent } from './section-detail/section-detail.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: 'aboutme',
         component: AboutMeComponent
+    },
+    {
+        path: 'aboutme/:sectionId',
+        component: SectionDetailComponent
     },
     {
         path: 'login',

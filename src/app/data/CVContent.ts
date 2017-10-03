@@ -1,0 +1,23 @@
+export interface CVContent
+{
+    contentType: 'CV';
+    basedata: CVBasedata;
+}
+
+export interface CVBasedata
+{
+    name: string;
+    birthdate: string;
+    nationality: string;
+    address: Address;
+    phone: string;
+    email: string;
+    homepage: string;
+}
+
+export interface Address
+{
+    street: string;
+    zip: string;
+    city: string;
+}

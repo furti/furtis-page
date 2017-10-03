@@ -1,8 +1,7 @@
+import { SectionService } from './../section.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { ErrorHandler } from './../error-handler.service';
-import { Section } from './../Section';
+import { Section } from './../data/Section';
 
 @Component({
     selector: 'fuu-about-me',
@@ -13,25 +12,13 @@ export class AboutMeComponent implements OnInit
 {
     sections: Section[];
 
-    constructor(private httpClient: HttpClient, private errorHandler: ErrorHandler) { }
+    constructor(private sectionService: SectionService) { }
 
     ngOnInit()
     {
-        this.httpClient.get('/api/sections')
-            .subscribe(data =>
-            {
-                let sectionArray = data['data'] as Section[];
-
-                sectionArray = sectionArray.sort((s1, s2) =>
-                {
-                    return s1.sortOrder - s2.sortOrder;
-                });
-
-                this.sections = sectionArray;
-            }, (err: HttpErrorResponse) =>
-            {
-                this.errorHandler.handleError(err);
-            });
+        this.sectionService
+            .getSections()
+            .then(sections => this.sections = sections);
     }
 
 }

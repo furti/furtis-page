@@ -1,4 +1,5 @@
-import { SectionContentType } from './SectionContentType';
+import { ProjectListContent } from './ProjectListContent';
+import { CVContent } from './CVContent';
 
 export interface Section
 {
@@ -29,18 +30,12 @@ export interface Section
     image: string;
 
     /**
-     * The type of section data to display when a user clicks on the section.
-     *
-     * @type {SectionContentType}
-     * @memberof Section
-     */
-    contentType: SectionContentType;
-
-    /**
      * A short text displayed in the section overview.
      *
      * @type {string}
      * @memberof Section
      */
     snippetText: string;
+
+    content: CVContent | ProjectListContent;
 }
