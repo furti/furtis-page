@@ -11,6 +11,8 @@ export const sections: Section[] = [{
         basedata: {
             name: 'Daniel Furtlehner',
             birthdate: '01.01.1970',
+            bornIn: 'Somewhere',
+            familiyStatus: 'unknown',
             nationality: 'Österreich',
             address: {
                 street: 'Some Street 1',

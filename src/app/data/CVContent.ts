@@ -8,6 +8,8 @@ export interface CVBasedata
 {
     name: string;
     birthdate: string;
+    bornIn: string;
+    familiyStatus: string;
     nationality: string;
     address: Address;
     phone: string;

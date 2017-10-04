@@ -17,6 +17,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { SectionCardComponent } from './section-card/section-card.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
+import { CvComponent } from './cv/cv.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { SectionDetailComponent } from './section-detail/section-detail.componen
         LoadingComponent,
         SectionCardComponent,
         ProfileImageComponent,
-        SectionDetailComponent
+        SectionDetailComponent,
+        CvComponent
     ],
     imports: [
         BrowserModule,

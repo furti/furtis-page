@@ -1,2 +1,8 @@
-<h2>{{section.title}}</h2>
-{{section | json}}
+<h2 *ngIf="section">{{section.title}}</h2>
+
+<fuu-loading *ngIf="!section"></fuu-loading>
+
+<ng-container [ngSwitch]="section.content.contentType" *ngIf="section">
+    <fuu-cv [section]="section" *ngSwitchCase="'CV'"></fuu-cv>
+    <div *ngSwitchDefault>Component for {{section.content.contentType}} not found</div>
+</ng-container>

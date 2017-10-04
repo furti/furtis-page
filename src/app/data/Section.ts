@@ -1,7 +1,7 @@
 import { ProjectListContent } from './ProjectListContent';
 import { CVContent } from './CVContent';
 
-export interface Section
+export interface Section<CONTENT_TYPE = CVContent | ProjectListContent>
 {
     id: number;
 
@@ -37,5 +37,5 @@ export interface Section
      */
     snippetText: string;
 
-    content: CVContent | ProjectListContent;
+    content: CONTENT_TYPE;
 }

@@ -1,0 +1,32 @@
+<div class="chronology"></div>
+<div class="profile">
+    <div class="image-wrapper">
+        <div class="image-background"></div>
+        <div class="triangle"></div>
+    </div>
+
+    <h3>{{section.content.basedata.name}}</h3>
+
+    <p>
+        <span>Geboren: {{section.content.basedata.birthdate}} / {{section.content.basedata.bornIn}}</span>
+        <span>Familienstand: {{section.content.basedata.familiyStatus}}</span>
+    </p>
+
+    <p>
+        <span>{{section.content.basedata.address.street}}</span>
+        <span>{{section.content.basedata.address.zip}} {{section.content.basedata.address.city}}</span>
+    </p>
+
+    <p>
+        <span><clr-icon shape="mobile"></clr-icon>{{section.content.basedata.phone}}</span>
+        <span>
+            <clr-icon shape="envelope"></clr-icon>
+            <a href="mailto:{{section.content.basedata.email}}">{{section.content.basedata.email}}</a>
+        </span>
+        <span>
+            <clr-icon shape="computer"></clr-icon>
+            <a href="{{section.content.basedata.homepage}}" target="_blank">{{section.content.basedata.homepage}}</a>
+        </span>
+    </p>
+
+</div>
