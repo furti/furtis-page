@@ -2,7 +2,8 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { ErrorHandler } from './error-handler.service';
 import { Section } from './data/Section';
@@ -13,12 +14,11 @@ export class SectionService
 
     constructor(private httpClient: HttpClient, private errorHandler: ErrorHandler) { }
 
-    getSections(): Promise<Section[]>
+    getSections(): Observable<Section[]>
     {
         return this.httpClient
             .get<Section[]>('/api/sections')
-            .toPromise()
-            .then(data =>
+            .map(data =>
             {
                 let sectionArray = data['data'] as Section[];
 
@@ -29,20 +29,19 @@ export class SectionService
 
                 return sectionArray;
             })
-            .catch((err: HttpErrorResponse) =>
+            .catch(err =>
             {
                 this.errorHandler.handleError(err);
 
-                throw err;
+                return Observable.throw(err);
             });
     }
 
-    getSection(sectionId: string): Promise<Section>
+    getSection(sectionId: string): Observable<Section>
     {
         return this.httpClient
             .get(`/api/sections/${sectionId}`)
-            .toPromise()
-            .then(data =>
+            .map(data =>
             {
                 return data['data'] as Section;
             })
@@ -50,7 +49,7 @@ export class SectionService
             {
                 this.errorHandler.handleError(err);
 
-                throw err;
+                return Observable.throw(err);
             });
     }
 }

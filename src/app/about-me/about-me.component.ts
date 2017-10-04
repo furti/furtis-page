@@ -18,7 +18,7 @@ export class AboutMeComponent implements OnInit
     {
         this.sectionService
             .getSections()
-            .then(sections => this.sections = sections);
+            .subscribe(sections => this.sections = sections);
     }
 
 }
