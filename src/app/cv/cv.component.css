@@ -13,15 +13,32 @@
 }
 
 .image-wrapper .image-background {
-    height: 150px;
+    height: 224px;
     width: 400px;
     background: #948981;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px 6px 0 0;
+}
+
+.image-circle {
+    border-radius: 50%;
+    background: #fafafa;
+    width: 200px;
+    height: 200px;
+}
+
+.image-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 .triangle {
     width: 0;
     height: 0;
-    border-width: 50px 200px 0 200px;
+    border-width: 40px 200px 0 200px;
     border-color: #948981 transparent;
     border-style: solid;
 }

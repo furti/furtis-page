@@ -1,20 +1,26 @@
-<div class="chronology"></div>
+<div class="chronology">
+    <h3>{{section.title}}</h3>
+</div>
 <div class="profile">
     <div class="image-wrapper">
-        <div class="image-background"></div>
+        <div class="image-background">
+            <div class="image-circle">
+                <img src="/assets/me_200.png" alt="me">
+            </div>
+        </div>
         <div class="triangle"></div>
     </div>
 
     <h3>{{section.content.basedata.name}}</h3>
 
     <p>
-        <span>Geboren: {{section.content.basedata.birthdate}} / {{section.content.basedata.bornIn}}</span>
-        <span>Familienstand: {{section.content.basedata.familiyStatus}}</span>
+        <span>{{section.content.basedata.address.street}}</span>
+        <span>{{section.content.basedata.address.zip}} {{section.content.basedata.address.city}}</span>
     </p>
 
     <p>
-        <span>{{section.content.basedata.address.street}}</span>
-        <span>{{section.content.basedata.address.zip}} {{section.content.basedata.address.city}}</span>
+        <span>Geboren: {{section.content.basedata.birthdate}} / {{section.content.basedata.bornIn}}</span>
+        <span>Familienstand: {{section.content.basedata.familiyStatus}}</span>
     </p>
 
     <p>

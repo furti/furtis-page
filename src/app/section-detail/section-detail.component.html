@@ -1,5 +1,3 @@
-<h2 *ngIf="section">{{section.title}}</h2>
-
 <fuu-loading *ngIf="!section"></fuu-loading>
 
 <ng-container [ngSwitch]="section.content.contentType" *ngIf="section">
