@@ -6,6 +6,7 @@ export interface CVContent
 
 export interface CVBasedata
 {
+    image: string;
     name: string;
     birthdate: string;
     bornIn: string;
