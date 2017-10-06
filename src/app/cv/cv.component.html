@@ -1,6 +1,19 @@
 <div class="chronology">
     <h3>{{section.title}}</h3>
+
+    <div class="events">
+        <div class="event" *ngFor="let event of section.content.events">
+            <div class="event-heading">
+                <b class="event-title">{{event.title}}</b>
+                <span class="dates">{{event.date.from | fuudate}} - {{event.date.to | fuudate}}</span>
+            </div>
+            <div class="event-content">
+                <p *ngFor="let paragraph of event.info">{{paragraph}}</p>
+            </div>
+        </div>
+    </div>
 </div>
+
 <div class="profile">
     <div class="image-wrapper">
         <div class="image-background">

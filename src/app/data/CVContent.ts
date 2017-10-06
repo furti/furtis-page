@@ -2,6 +2,7 @@ export interface CVContent
 {
     contentType: 'CV';
     basedata: CVBasedata;
+    events: CVEvent[];
 }
 
 export interface CVBasedata
@@ -23,4 +24,14 @@ export interface Address
     street: string;
     zip: string;
     city: string;
+}
+
+export interface CVEvent
+{
+    title: string;
+    date: {
+        from: string;
+        to: string;
+    };
+    info: string[];
 }

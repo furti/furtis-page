@@ -18,6 +18,7 @@ import { SectionCardComponent } from './section-card/section-card.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 import { CvComponent } from './cv/cv.component';
+import { FuuDatePipe } from './date.pipe';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { CvComponent } from './cv/cv.component';
         SectionCardComponent,
         ProfileImageComponent,
         SectionDetailComponent,
-        CvComponent
+        CvComponent,
+        FuuDatePipe
     ],
     imports: [
         BrowserModule,

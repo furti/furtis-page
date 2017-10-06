@@ -25,7 +25,25 @@ export const sections: Section[] = [{
             phone: '+43 123 45 67',
             homepage: 'https://furti.193b.starter-ca-central-1.openshiftapps.com/',
             email: 'foo@bar.com'
-        }
+        },
+        events: [
+            {
+                title: 'Current Work',
+                date: {
+                    from: '2000-01-01',
+                    to: '2010-01-01'
+                },
+                info: ['Did a lot of work here.']
+            },
+            {
+                title: 'Previous Work',
+                date: {
+                    from: '1970-01-01',
+                    to: '1980-01-01'
+                },
+                info: ['Did also a lot of work here.', 'Was responsible for something.']
+            }
+        ]
     }
 }, {
     id: 2,
