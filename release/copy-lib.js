@@ -12,6 +12,10 @@ const libs = [
     {
         source: path.join(__dirname, '../node_modules/zone.js/dist/zone.min.js'),
         target: 'zone.min.js'
+    },
+    {
+        source: path.join(__dirname, '../node_modules/clarity-icons/clarity-icons.min.js'),
+        target: 'clarity-icons.min.js'
     }
 ];
 

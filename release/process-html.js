@@ -16,7 +16,7 @@ function processHtml() {
                 return;
             }
 
-            data = data.replace('<!-- polyfills -->', '<script src="shim.min.js"></script>\n<script src="zone.min.js"></script>');
+            data = data.replace('<!-- polyfills -->', '<script src="shim.min.js"></script>\n<script src="zone.min.js"></script>\n<script src="clarity-icons.min.js"></script>');
             data = data.replace('<!-- bundle-script -->', '<script src="build.js"></script>');
             data = data.replace('<!-- styles -->', '<link rel="stylesheet" media="all" href="styles.css" />')
 
