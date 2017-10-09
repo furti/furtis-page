@@ -1,0 +1,9 @@
+:host {
+    font-size: small;
+    display: flex;
+    align-items: center;
+}
+
+clr-icon {
+    transform: rotate(-90deg);
+}

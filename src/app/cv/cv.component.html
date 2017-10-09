@@ -1,5 +1,6 @@
 <div class="chronology">
     <h3>{{section.title}}</h3>
+    <fuu-about-me-back-button></fuu-about-me-back-button>
 
     <div class="events">
         <div class="event" *ngFor="let event of section.content.events">
@@ -37,7 +38,8 @@
     </p>
 
     <p>
-        <span><clr-icon shape="mobile"></clr-icon>{{section.content.basedata.phone}}</span>
+        <span>
+            <clr-icon shape="mobile"></clr-icon>{{section.content.basedata.phone}}</span>
         <span>
             <clr-icon shape="envelope"></clr-icon>
             <a href="mailto:{{section.content.basedata.email}}">{{section.content.basedata.email}}</a>

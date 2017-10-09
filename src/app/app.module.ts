@@ -19,6 +19,7 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 import { CvComponent } from './cv/cv.component';
 import { FuuDatePipe } from './date.pipe';
+import { AboutMeBackButtonComponent } from './about-me-back-button/about-me-back-button.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { FuuDatePipe } from './date.pipe';
         ProfileImageComponent,
         SectionDetailComponent,
         CvComponent,
-        FuuDatePipe
+        FuuDatePipe,
+        AboutMeBackButtonComponent
     ],
     imports: [
         BrowserModule,
