@@ -45,3 +45,7 @@ testem.log
 Thumbs.db
 
 encoded_image.txt
+/database/internal
+/database/import
+/database/data
+database/scripts/*.js

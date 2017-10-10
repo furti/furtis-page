@@ -16,7 +16,8 @@
     "e2e": "ng e2e",
     "compile": "ngc -p tsconfig-aot.json",
     "rollup": "rollup -c rollup-config.js",
-    "release": "node release.js"
+    "release": "node release.js",
+    "compiledb": "tsc --watch -p ./database/scripts/tsconfig.json"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +37,7 @@
     "clarity-ui": "^0.10.4",
     "core-js": "^2.4.1",
     "express": "^4.15.5",
+    "mongodb": "^2.2.31",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
@@ -44,10 +46,13 @@
     "@angular/compiler-cli": "^4.4.3",
     "@angular/language-service": "^4.2.4",
     "@angular/platform-server": "^4.4.3",
+    "@types/argparse": "^1.0.33",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
+    "@types/mongodb": "^2.2.13",
     "@types/node": "~6.0.60",
     "angular-in-memory-web-api": "^0.4.6",
+    "argparse": "^1.0.9",
     "clean-css": "^4.1.9",
     "codelyzer": "~3.1.1",
     "copy-dir": "^0.3.0",
