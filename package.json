@@ -16,12 +16,15 @@
         "e2e": "ng e2e",
         "compile": "ngc -p tsconfig-aot.json",
         "rollup": "rollup -c rollup-config.js",
-        "release": "node release.js"
+        "release": "node release.js",
+        "compiledb": "tsc -p ./database/scripts/tsconfig.json",
+        "compileserver": "tsc -p ./server/tsconfig.json"
     },
     "private": true,
     "dependencies": {
         "express": "^4.15.5",
-        "body-parser": "^1.18.2"
+        "body-parser": "^1.18.2",
+        "mongodb": "^2.2.31"
     },
     "repository": {
         "type": "git",
