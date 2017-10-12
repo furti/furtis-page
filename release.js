@@ -1,5 +1,6 @@
 const packageCopy = require('./release/package');
 const compile = require('./release/compile');
+const compileServer = require('./release/compile-server');
 const processHtml = require('./release/process-html');
 const copyLib = require('./release/copy-lib');
 const copyDist = require('./release/copy-dist');
@@ -10,14 +11,15 @@ const path = require('path');
 const targetPath = path.join(__dirname, '../furtis-page-dist');
 
 
-
 Promise.all([
     packageCopy(targetPath),
     compile(),
     processHtml(),
     copyLib(),
     copyAssets(),
-    copyServer(targetPath),
+    compileServer().then(() => {
+        return copyServer(targetPath);
+    }),
     css(),
 ]).then(() => {
     copyDist(targetPath);

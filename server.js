@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 // Serve everything from dist to the client as it is
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// API location
+app.use('/api', api);
+
 //All other requestst should be handled by angular. e.g. /about-me,...
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));

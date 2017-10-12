@@ -49,3 +49,4 @@ encoded_image.txt
 /database/import
 /database/data
 database/scripts/*.js
+server/*.js

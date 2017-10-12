@@ -11,7 +11,6 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { DividerComponent } from './divider/divider.component';
-import { HttpmockModule } from './httpmock/httpmock.module';
 import { ErrorHandler } from './error-handler.service';
 import { LoadingComponent } from './loading/loading.component';
 import { SectionCardComponent } from './section-card/section-card.component';
@@ -41,8 +40,7 @@ import { AboutMeBackButtonComponent } from './about-me-back-button/about-me-back
         AppRoutingModule,
         ClarityModule.forRoot(),
         ReactiveFormsModule,
-        HttpClientModule,
-        HttpmockModule
+        HttpClientModule
     ],
     providers: [ErrorHandler, SectionService],
     bootstrap: [AppComponent]

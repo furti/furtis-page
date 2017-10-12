@@ -1,7 +1,7 @@
 const packageJson = require('../package.json');
 const path = require('path');
 const fs = require('fs-extra');
-const requiredDependencies = ['express', 'body-parser'];
+const requiredDependencies = ['express', 'body-parser', 'mongodb'];
 
 function filterPackageJson(packageToFilter) {
     const propertyNames = Object.getOwnPropertyNames(packageToFilter);

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 import { ErrorHandler } from './error-handler.service';
 import { Section } from './data/Section';
@@ -20,14 +21,12 @@ export class SectionService
             .get<Section[]>('/api/sections')
             .map(data =>
             {
-                let sectionArray = data['data'] as Section[];
-
-                sectionArray = sectionArray.sort((s1, s2) =>
+                data = data.sort((s1, s2) =>
                 {
                     return s1.sortOrder - s2.sortOrder;
                 });
 
-                return sectionArray;
+                return data;
             })
             .catch(err =>
             {
