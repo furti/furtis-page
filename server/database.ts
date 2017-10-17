@@ -4,7 +4,7 @@ const connectionUrl: string = process.env.DB_CONNECTION;
 
 if (!connectionUrl)
 {
-    throw new Error('Database URL not specified');
+    throw new Error('Database URL not specified. export \'DB_CONNECTION=mongodb://<user>:<password>@127.0.0.1:27017/furti\'');
 }
 
 let mongo: Db;
