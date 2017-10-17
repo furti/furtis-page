@@ -25,4 +25,9 @@ router.get('/sections', (req, res) =>
         });
 });
 
+router.get('*', (req, res) =>
+{
+    res.status(404).send(`URL "${req.originalUrl}" not found!`);
+});
+
 module.exports = router;

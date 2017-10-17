@@ -19,6 +19,8 @@ import { SectionDetailComponent } from './section-detail/section-detail.componen
 import { CvComponent } from './cv/cv.component';
 import { FuuDatePipe } from './date.pipe';
 import { AboutMeBackButtonComponent } from './about-me-back-button/about-me-back-button.component';
+import { ErrorComponent } from './error/error.component';
+import { AsciiViewComponent } from './ascii-view/ascii-view.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,9 @@ import { AboutMeBackButtonComponent } from './about-me-back-button/about-me-back
         SectionDetailComponent,
         CvComponent,
         FuuDatePipe,
-        AboutMeBackButtonComponent
+        AboutMeBackButtonComponent,
+        ErrorComponent,
+        AsciiViewComponent
     ],
     imports: [
         BrowserModule,

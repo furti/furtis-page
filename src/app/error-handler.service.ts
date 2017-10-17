@@ -6,9 +6,11 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ErrorHandler
 {
+    lastError: HttpErrorResponse;
+
     constructor(private router: Router) { }
 
-    handleError(err: HttpErrorResponse): any
+    handleError(err: HttpErrorResponse): void
     {
         // Some client side error occured
         if (err.error instanceof Error)
@@ -18,6 +20,8 @@ export class ErrorHandler
         }
         else
         {
+            this.lastError = err;
+
             switch (err.status)
             {
                 case 401:
