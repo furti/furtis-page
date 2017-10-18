@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { FormControlState } from '../FormControlState';
+import { ErrorHandler } from './../error-handler.service';
 
 @Component({
     selector: 'fuu-login',
@@ -14,14 +15,19 @@ export class LoginComponent implements OnInit
     submitTried: boolean;
     usernameInvalid = true;
     passwordInvalid = true;
+    errorMessage: string;
 
-    constructor(private formBuilder: FormBuilder)
+    constructor(private formBuilder: FormBuilder, private errorHandler: ErrorHandler)
     {
         this.setupForm();
     }
 
     ngOnInit()
     {
+        if (this.errorHandler.lastError)
+        {
+            this.errorMessage = this.errorHandler.lastError.error;
+        }
     }
 
     login(): void

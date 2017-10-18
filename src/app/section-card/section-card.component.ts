@@ -12,10 +12,16 @@ export class SectionCardComponent implements OnInit
     @Input()
     section: Section;
 
+    authenticationRequired: boolean;
+
     constructor() { }
 
     ngOnInit()
     {
+        if (this.section.authenticationRequired)
+        {
+            this.authenticationRequired = true;
+        }
     }
 
 }

@@ -13,15 +13,14 @@
             </label>
 
             <label for="password" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="passwordInvalid && submitTried">
-                    <input class="password" type="password" id="password" formControlName="password" placeholder="Password">
-                    <span class="tooltip-content">
-                        Bitte gib dein Passwort ein
-                    </span>
-                </label>
+                <input class="password" type="password" id="password" formControlName="password" placeholder="Password">
+                <span class="tooltip-content">
+                    Bitte gib dein Passwort ein
+                </span>
+            </label>
 
-
-            <div class="error active">
-                Derzeit ist die Anmeldung noch nicht möglich.
+            <div class="error active" *ngIf="errorMessage">
+                {{errorMessage}}
             </div>
 
             <button (click)="login()" type="submit" class="btn btn-primary">Anmelden</button>

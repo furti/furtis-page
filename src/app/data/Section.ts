@@ -37,5 +37,8 @@ export interface Section<CONTENT_TYPE = CVContent | ProjectListContent>
      */
     snippetText: string;
 
+
+    authenticationRequired: boolean;
+
     content: CONTENT_TYPE;
 }

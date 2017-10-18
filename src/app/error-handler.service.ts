@@ -25,7 +25,7 @@ export class ErrorHandler
             switch (err.status)
             {
                 case 401:
-                    this.navigateTo('/unauthorized');
+                    this.navigateTo('/login');
                     break;
                 case 403:
                     this.navigateTo('/forbidden');

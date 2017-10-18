@@ -55,13 +55,30 @@ export class Database
             .find({})
             .map((section: any) =>
             {
-                return {
+                const response = {
                     id: section._id,
                     sortOrder: section.sortOrder,
                     title: section.title,
                     image: section.image,
-                    snippetText: section.snippetText
+                    snippetText: section.snippetText,
+                    authenticationRequired: false
                 };
+
+                if (section.requiredRoles && section.requiredRoles.length > 0)
+                {
+                    response.authenticationRequired = true;
+                }
+
+                return response;
             }).toArray();
+    }
+
+    getSection(id: number): Promise<any>
+    {
+        return mongo.collection('sections')
+            .findOne({ _id: id }).then(section =>
+            {
+                return section;
+            });
     }
 }
