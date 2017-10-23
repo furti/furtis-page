@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const api = require('./server/api');
+const sections = require('./server/sections');
+const authentication = require('./server/authentication');
 const app = express();
 
 const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
@@ -13,7 +14,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
-app.use('/api', api);
+app.use('/api/sections', sections);
+
+app.use('/authenticate', authentication);
 
 //All other requestst should be handled by angular. e.g. /about-me,...
 app.get('*', (req, res) => {

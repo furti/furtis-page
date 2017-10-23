@@ -3,7 +3,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClarityModule } from 'clarity-angular';
 
 import { AppComponent } from './app.component';
@@ -21,6 +21,9 @@ import { FuuDatePipe } from './date.pipe';
 import { AboutMeBackButtonComponent } from './about-me-back-button/about-me-back-button.component';
 import { ErrorComponent } from './error/error.component';
 import { AsciiViewComponent } from './ascii-view/ascii-view.component';
+import { SecurityService } from './security/security.service';
+import { SecurityInterceptor } from './security/SecurityInterceptor';
+import { AuthenticationService } from './security/authentication.service';
 
 @NgModule({
     declarations: [
@@ -39,14 +42,18 @@ import { AsciiViewComponent } from './ascii-view/ascii-view.component';
         ErrorComponent,
         AsciiViewComponent
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ClarityModule.forRoot(),
-        ReactiveFormsModule,
-        HttpClientModule
+    imports: [BrowserModule, AppRoutingModule, ClarityModule.forRoot(), ReactiveFormsModule, HttpClientModule],
+    providers: [
+        ErrorHandler,
+        SectionService,
+        SecurityService,
+        AuthenticationService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: SecurityInterceptor,
+            multi: true
+        }
     ],
-    providers: [ErrorHandler, SectionService],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

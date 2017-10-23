@@ -2,12 +2,13 @@ import { Section } from './Section';
 
 // tslint:disable:max-line-length
 
-export const sections: Section[] = [{
+export const sections= [{
     id: 1,
     sortOrder: 1,
     title: 'Lebenslauf',
     image: '/assets/cv_overview.png',
     snippetText: 'Hier erfährst du, in umgekehrt chronologischer Reihenfolge, was in meinem Leben so alles passiert ist und wie ich zu dem geworden bin der ich heute bin.',
+    authenticationRequired: true,
     content: {
         contentType: 'CV',
         basedata: {
@@ -25,6 +26,7 @@ export const sections: Section[] = [{
             phone: '+43 123 45 67',
             homepage: 'https://furti.193b.starter-ca-central-1.openshiftapps.com/',
             email: 'foo@bar.com'
+            
         },
         events: [
             {

@@ -1,23 +1,22 @@
+import { User } from './../src/app/security/User';
 import { Request, Response } from 'express';
+import { createHmac } from 'crypto';
 
-export interface AuthenticatedRequest extends Request
-{
-    user: User;
+const secret = `:'~n0Ft"3K7@mSf=DK!bOnmX"6fflGQSaN\-6tUd-c#2BoF8hP`;
+
+export interface AuthenticatedRequest extends Request {
+    user: Authentication;
 }
 
-export class User
-{
-    constructor(public id: string, public roles: string[]) { }
+export class Authentication implements User {
+    constructor(public sub: string, public roles: string[], public exp: number, public name: string) {}
 
-    hasAnyRole(roles: string[]): boolean
-    {
-        if (!roles || roles.length === 0)
-        {
+    hasAnyRole(roles: string[]): boolean {
+        if (!roles || roles.length === 0) {
             return true;
         }
 
-        if (!this.roles || this.roles.length === 0)
-        {
+        if (!this.roles || this.roles.length === 0) {
             return false;
         }
 
@@ -27,22 +26,57 @@ export class User
     }
 }
 
-export function isAuthenticated(request: AuthenticatedRequest, response: Response, next: any): void
-{
+function parseToken(token: string): Authentication {
+    const parts = token.split('.');
+
+    if (parts.length !== 3) {
+        throw new Error(`Got invalid token ${token}`);
+    }
+
+    const actualSignature = createSignature(parts[0], parts[1]);
+
+    if (actualSignature !== parts[2]) {
+        throw new Error('Signature does not match');
+    }
+
+    const decodedUser = Buffer.from(parts[1], 'base64').toString('utf8');
+    console.log(decodedUser);
+    const parsedUser = JSON.parse(decodedUser);
+
+    if (!parsedUser.exp || parsedUser.exp < new Date().getTime()) {
+        throw new Error('Authentication expired');
+    }
+
+    return new Authentication(parsedUser.sub, parsedUser.roles, parsedUser.exp, parsedUser.name);
+}
+
+export function createSignature(base64Header: string, base64Payload: string): string {
+    const hmac = createHmac('sha256', secret);
+
+    hmac.update(`${base64Header}.${base64Payload}`);
+
+    return hmac.digest('base64');
+}
+
+export function isAuthenticated(request: AuthenticatedRequest, response: Response, next: any): void {
     const token = request.header('Authorization');
 
-    console.log('got token', token);
-
-    if (!token || token.trim().length === 0)
-    {
-        console.log('NO token');
+    if (!token || token.trim().length === 0) {
+        console.log('No token');
 
         response.status(401).send('Um auf die Daten zuzugreifen, ist eine Anmeldung erforderlich.');
 
         return;
     }
 
-    request.user = new User('1', []);
+    try {
+        request.user = parseToken(token);
+    } catch (e) {
+        console.log(`Got Error while parsing`, e.message);
+        response.status(401).send('Um auf die Daten zuzugreifen, ist eine Anmeldung erforderlich.');
+
+        return;
+    }
 
     next();
 }
