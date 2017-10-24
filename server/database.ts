@@ -76,11 +76,6 @@ export class Database {
     }
 
     getUser(username: string): Promise<any> {
-        return mongo
-            .collection('users')
-            .findOne({ username })
-            .then(user => {
-                return user;
-            });
+        return mongo.collection('users').findOne({ username });
     }
 }

@@ -8,19 +8,21 @@ export class SecurityService {
     private _token: string;
     private user: User;
 
-    constructor() {}
+    constructor() {
+        this.loadTokenFromStorage();
+    }
 
     get token(): string {
         return this._token;
     }
 
     set token(token: string) {
-        const parts = token.split('.');
-        const encodedUser = parts[1];
-        const decodedUser = atob(encodedUser);
+        console.log('Got token', token);
 
         this._token = token;
-        this.user = JSON.parse(decodedUser);
+
+        this.parseToken(this._token);
+        this.saveTokenInStorage(this._token);
     }
 
     isAuthenticated(): boolean {
@@ -43,5 +45,30 @@ export class SecurityService {
         const filteredRoles = roles.filter(role => this.user.roles.indexOf(role) >= 0);
 
         return filteredRoles.length > 0;
+    }
+
+    private parseToken(token: string): void {
+        const parts = token.split('.');
+        const encodedUser = parts[1];
+        const decodedUser = atob(encodedUser);
+
+        this.user = JSON.parse(decodedUser);
+
+        if (this.user.exp < new Date().getTime()) {
+            this._token = null;
+            this.user = null;
+        }
+    }
+
+    private loadTokenFromStorage(): void {
+        this._token = localStorage.getItem('authToken');
+
+        if (this._token) {
+            this.parseToken(this._token);
+        }
+    }
+
+    private saveTokenInStorage(token: string): void {
+        localStorage.setItem('authToken', token);
     }
 }

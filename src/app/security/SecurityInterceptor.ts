@@ -15,12 +15,12 @@ export class SecurityInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // Adds the Authorization Header to /api requests only
-        // if (this.securityService.isAuthenticated() && req.url.indexOf('/api') !== -1) {
-        //     const authToken = this.securityService.token;
+        if (this.securityService.isAuthenticated() && req.url.indexOf('/api') !== -1) {
+            const authToken = this.securityService.token;
 
-        //     // Clone the request to add the new header.
-        //     req = req.clone({ headers: req.headers.set('Authorization', authToken) });
-        // }
+            // Clone the request to add the new header.
+            req = req.clone({ headers: req.headers.set('Authorization', authToken) });
+        }
 
         return next.handle(req);
     }

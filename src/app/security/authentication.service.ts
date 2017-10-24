@@ -21,17 +21,9 @@ export class AuthenticationService {
                 password
             })
             .map(result => {
-                if (result.authenticated) {
-                    this.parseToken(result.token);
-
-                    console.log(this);
-                }
+                this.securityService.token = result.token;
 
                 return result;
             });
-    }
-
-    private parseToken(token: string): void {
-        this.securityService.token = token;
     }
 }

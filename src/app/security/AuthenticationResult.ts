@@ -1,6 +1,3 @@
-export interface AuthenticationResult
-{
-    authenticated: boolean;
+export interface AuthenticationResult {
     token: string;
-    message: string;
 }

@@ -45,11 +45,7 @@ export class LoginComponent implements OnInit {
 
         this.authenticationService.authenticate(username, password).subscribe(
             result => {
-                if (result.authenticated) {
-                    this.router.navigate(['/aboutme']);
-                } else {
-                    this.errorMessage = result.message;
-                }
+                this.router.navigate(['/aboutme']);
             },
             (error: HttpErrorResponse) => {
                 this.errorMessage = error.error;

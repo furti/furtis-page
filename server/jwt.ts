@@ -80,3 +80,26 @@ export function isAuthenticated(request: AuthenticatedRequest, response: Respons
 
     next();
 }
+
+export function createToken(sub: string, name: string, roles: string[]): string {
+    const header = {
+        alg: 'HS256',
+        typ: 'JWT'
+    };
+
+    let millis = new Date().getTime();
+    millis += 3600 * 8 * 1000;
+
+    const payload = {
+        sub,
+        name,
+        roles,
+        exp: millis
+    };
+
+    const headerAsBase64 = Buffer.from(JSON.stringify(header)).toString('base64');
+    const payloadAsBase64 = Buffer.from(JSON.stringify(payload)).toString('base64');
+    const signature = createSignature(headerAsBase64, payloadAsBase64);
+
+    return `${headerAsBase64}.${payloadAsBase64}.${signature}`;
+}
