@@ -47,6 +47,17 @@ export class SecurityService {
         return filteredRoles.length > 0;
     }
 
+    getUser(): User {
+        return this.user;
+    }
+
+    logout(): void {
+        this._token = null;
+        this.user = null;
+
+        localStorage.removeItem('authToken');
+    }
+
     private parseToken(token: string): void {
         const parts = token.split('.');
         const encodedUser = parts[1];

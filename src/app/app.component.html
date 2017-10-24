@@ -14,12 +14,19 @@
 
         <div class="header-actions">
             <clr-dropdown>
-                <button class="nav-icon" clrDropdownTrigger>
-                        <clr-icon shape="user"></clr-icon>
-                        <clr-icon shape="caret down"></clr-icon>
-                    </button>
+                <button class="nav-icon" clrDropdownTrigger *ngIf="!getUserName()">
+                    <clr-icon shape="user"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+
+                <button clrDropdownTrigger *ngIf="getUserName()">
+                    <span>{{getUserName()}}</span>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                    <a routerLink="/login" clrDropdownItem>Anmelden</a>
+                    <a routerLink="/login" clrDropdownItem *ngIf="!getUserName()">Anmelden</a>
+                    <a (click)="logout()" clrDropdownItem *ngIf="getUserName()">Abmelden</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
         </div>
