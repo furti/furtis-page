@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { Database } from './database';
 import { createToken } from './jwt';
 import { AuthenticationResult } from './../src/app/security/AuthenticationResult';
-const bcrypt: any = require('bcrypt');
+import { pbkdf2 } from 'crypto';
 
 const router = Router();
 const client = new Database();
@@ -12,16 +12,22 @@ interface AuthData {
     password: string;
 }
 
-function checkPassword(plainTextPassword: string, hashedPassword: string): Promise<void> {
-    return bcrypt //
-        .compare(plainTextPassword, hashedPassword)
-        .then(function(res: boolean) {
-            if (res === true) {
-                return;
+function checkPassword(plainTextPassword: string, salt: string, hashedPassword: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+        pbkdf2(plainTextPassword, salt, 100000, 64, 'sha512', (err, hash) => {
+            if (err) {
+                reject(err);
+            }
+
+            const actualHash = hash.toString('base64');
+
+            if (actualHash === hashedPassword) {
+                resolve();
             } else {
-                throw new Error('Passwords do not match');
+                reject('Passwords do not match');
             }
         });
+    });
 }
 
 router.post('/', (req, resp) => {
@@ -38,7 +44,7 @@ router.post('/', (req, resp) => {
             .then(user => {
                 console.log(`found user`);
 
-                return checkPassword(authData.password, user.password) //
+                return checkPassword(authData.password, user.salt, user.password) //
                     .then(() => {
                         const token = createToken(user._id, user.name, user.roles);
 

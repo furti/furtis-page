@@ -140,13 +140,13 @@ export class Furti {
             });
     }
 
-    updateUserPassword(username: string, password: string, options: UpdateOptions): Promise<any> {
+    updateUserPassword(username: string, password: string, salt: string, options: UpdateOptions): Promise<any> {
         return this.db
             .collection('users')
             .updateOne(
                 { username },
                 {
-                    $set: { password }
+                    $set: { password, salt }
                 }
             )
             .then(() => {

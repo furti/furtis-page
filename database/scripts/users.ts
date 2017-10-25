@@ -1,8 +1,7 @@
 import { ArgumentParser } from 'argparse';
 import * as fs from 'fs';
 import * as path from 'path';
-import { randomBytes } from 'crypto';
-const bcrypt: any = require('bcrypt');
+import { randomBytes, pbkdf2Sync } from 'crypto';
 
 import { Furti } from './furti';
 
@@ -47,12 +46,18 @@ function createId() {
 }
 
 function createPassword(): string {
-    const passwordBytes = randomBytes(8);
+    const passwordBytes = randomBytes(10);
     return passwordBytes.toString('base64');
 }
 
-function encodePassword(password: string): string {
-    return bcrypt.hashSync(password, 10);
+function createSalt(): string {
+    return randomBytes(24).toString('base64');
+}
+
+function encodePassword(password: string, salt: string): string {
+    const hash = pbkdf2Sync(password, salt, 100000, 64, 'sha512');
+
+    return hash.toString('base64');
 }
 
 if (args.new) {
@@ -99,13 +104,14 @@ if (args.new) {
 } else if (args.createpass) {
     const username = args.createpass;
     const password = createPassword();
-    const encodedPassword = encodePassword(password);
+    const salt = createSalt();
+    const encodedPassword = encodePassword(password, salt);
 
     const furti = new Furti(args.user, args.password);
 
     furti.connect().then(db => {
         db
-            .updateUserPassword(username, encodedPassword, {
+            .updateUserPassword(username, encodedPassword, salt, {
                 autoclose: true
             })
             .then(() => {

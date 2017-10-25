@@ -33,7 +33,6 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@webcomponents/custom-elements": "^1.0.2",
-    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "clarity-angular": "^0.10.4",
     "clarity-icons": "^0.10.4",
