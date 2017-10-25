@@ -18,7 +18,8 @@
         "rollup": "rollup -c rollup-config.js",
         "release": "node release.js",
         "compiledb": "tsc -p ./database/scripts/tsconfig.json",
-        "compileserver": "tsc -p ./server/tsconfig.json"
+        "compileserver": "tsc -p ./server/tsconfig.json",
+        "testserver": "jasmine"
     },
     "private": true,
     "dependencies": {
