@@ -2,7 +2,12 @@ import { User } from './../src/app/security/User';
 import { Request, Response } from 'express';
 import { createHmac } from 'crypto';
 
-const secret = `:'~n0Ft"3K7@mSf=DK!bOnmX"6fflGQSaN\-6tUd-c#2BoF8hP`;
+const secret = process.env.JWT_SECRET;
+
+if (!secret) {
+    console.log(`Missing jwt secret. Use export 'JWT_SECRET=<secret>'`);
+    throw new Error(`Missing jwt secret. Use export 'JWT_SECRET=<secret>'`);
+}
 
 export interface AuthenticatedRequest extends Request {
     user: Authentication;
