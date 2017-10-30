@@ -9,6 +9,7 @@
                 <span class="dates">{{event.date.from | fuudate}} - {{event.date.to | fuudate}}</span>
             </div>
             <div class="event-content">
+                <p class="p4">{{event.subtitle}}</p>
                 <p *ngFor="let paragraph of event.info">{{paragraph}}</p>
             </div>
         </div>
@@ -27,7 +28,7 @@
 
     <h3>{{section.content.basedata.name}}</h3>
 
-    <p>
+    <p class="address">
         <span>{{section.content.basedata.address.street}}</span>
         <span>{{section.content.basedata.address.zip}} {{section.content.basedata.address.city}}</span>
     </p>

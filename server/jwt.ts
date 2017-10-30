@@ -17,6 +17,8 @@ export class Authentication implements User {
     constructor(public sub: string, public roles: string[], public exp: number, public name: string) {}
 
     hasAnyRole(roles: string[]): boolean {
+        console.log(`USER: [${roles}]: [${this.roles}]`);
+
         if (!roles || roles.length === 0) {
             return true;
         }

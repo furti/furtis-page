@@ -84,6 +84,34 @@ export class Furti {
             });
     }
 
+    updateSectionContent(sectionContent: any, options: UpdateOptions): Promise<any> {
+        const sectionContentToUpdate = Object.assign({}, sectionContent);
+        delete sectionContentToUpdate.sectionTitle;
+
+        return this.db
+            .collection('sections')
+            .updateOne(
+                { title: sectionContent.sectionTitle },
+                {
+                    $set: { content: sectionContentToUpdate }
+                }
+            )
+            .then(() => {
+                console.log('Updated content for section ' + sectionContent.title);
+
+                if (options.autoclose) {
+                    return this.close();
+                }
+            })
+            .catch(reason => {
+                console.log('Error updating content', reason);
+
+                if (options.autoclose) {
+                    return this.close();
+                }
+            });
+    }
+
     updateUser(user: any, options: UpdateOptions): Promise<any> {
         const userToUpdate = Object.assign({}, user);
         userToUpdate._id = userToUpdate.id;

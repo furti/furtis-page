@@ -1,12 +1,10 @@
-export interface CVContent
-{
+export interface CVContent {
     contentType: 'CV';
     basedata: CVBasedata;
     events: CVEvent[];
 }
 
-export interface CVBasedata
-{
+export interface CVBasedata {
     image: string;
     name: string;
     birthdate: string;
@@ -19,16 +17,15 @@ export interface CVBasedata
     homepage: string;
 }
 
-export interface Address
-{
+export interface Address {
     street: string;
     zip: string;
     city: string;
 }
 
-export interface CVEvent
-{
+export interface CVEvent {
     title: string;
+    subtitle: string;
     date: {
         from: string;
         to: string;

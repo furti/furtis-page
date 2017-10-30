@@ -71,6 +71,9 @@ export class Database {
             .collection('sections')
             .findOne({ _id: id })
             .then(section => {
+                section.id = section._id;
+                delete section._id;
+
                 return section;
             });
     }

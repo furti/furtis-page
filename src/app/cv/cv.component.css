@@ -49,11 +49,15 @@
 }
 
 .profile {
-    border-left: 1px solid #AD73C8;
+    border-left: 1px solid #ad73c8;
     padding-left: 12px;
     flex-grow: 1;
     max-width: 35vw;
     height: 100%;
+}
+
+p.address {
+    margin-top: 0;
 }
 
 p span {
@@ -70,18 +74,19 @@ p span {
 }
 
 .event-heading {
-    border-right: 1px dashed #AD73C8;
+    border-right: 1px dashed #ad73c8;
     width: 15vw;
     text-align: right;
     padding-right: 12px;
     padding-bottom: 36px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .event-content {
     flex-grow: 1;
-    padding-left: 12px;
+    padding: 0 12px;
 }
 
 .event-content p {
