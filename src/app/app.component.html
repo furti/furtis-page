@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="header header-3">
         <div class="branding">
-            <a routerLink="/">
+            <a routerLink="/" class="nav-link">
                 <fuu-profile-image type="branding"></fuu-profile-image>
                 <span class="title">Daniel Furtlehner</span>
             </a>
@@ -19,7 +19,7 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
 
-                <button clrDropdownTrigger *ngIf="getUserName()">
+                <button class="nav-text" clrDropdownTrigger *ngIf="getUserName()">
                     <span>{{getUserName()}}</span>
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
