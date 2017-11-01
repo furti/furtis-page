@@ -1,0 +1,152 @@
+:host {
+    --circle-background: #eee;
+    --circle-color: #007cbb;
+    --circle-size: 50px;
+    --half-circle-size: 25px;
+    --transition-length: 1s;
+    --inset-size: 40px;
+    --inset-margin: 5px;
+    --inset-color: #fbfbfb;
+
+    border-radius: 50%;
+    background-color: var(--circle-background);
+    width: var(--circle-size);
+    height: var(--circle-size);
+}
+
+.mask,
+.fill {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    position: absolute;
+    backface-visibility: hidden;
+
+    transition: transform var(--transition-length);
+    backface-visibility: hidden;
+}
+
+.mask {
+    clip: rect(0px, var(--circle-size), var(--circle-size), var(--half-circle-size));
+}
+
+.circle .fill {
+    background-color: var(--circle-color);
+    clip: rect(0px, var(--half-circle-size), var(--circle-size), 0px);
+}
+
+.inset {
+    width: var(--inset-size);
+    height: var(--inset-size);
+    position: absolute;
+    margin-left: var(--inset-margin);
+    margin-top: var(--inset-margin);
+    background-color: var(--inset-color);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* rotate classes */
+
+.circle .fill.progress5,
+.mask.progress5 {
+    transform: rotate(9deg);
+}
+
+.circle .fill.progress10,
+.mask.progress10 {
+    transform: rotate(18deg);
+}
+
+.circle .fill.progress15,
+.mask.progress15 {
+    transform: rotate(27deg);
+}
+
+.circle .fill.progress20,
+.mask.progress20 {
+    transform: rotate(36deg);
+}
+
+.circle .fill.progress25,
+.mask.progress25 {
+    transform: rotate(45deg);
+}
+
+.circle .fill.progress30,
+.mask.progress30 {
+    transform: rotate(54deg);
+}
+
+.circle .fill.progress35,
+.mask.progress35 {
+    transform: rotate(63deg);
+}
+
+.circle .fill.progress40,
+.mask.progress40 {
+    transform: rotate(72deg);
+}
+
+.circle .fill.progress45,
+.mask.progress45 {
+    transform: rotate(81deg);
+}
+
+.circle .fill.progress50,
+.mask.progress50 {
+    transform: rotate(90deg);
+}
+
+.circle .fill.progress55,
+.mask.progress55 {
+    transform: rotate(99deg);
+}
+
+.circle .fill.progress60,
+.mask.progress60 {
+    transform: rotate(108deg);
+}
+
+.circle .fill.progress65,
+.mask.progress65 {
+    transform: rotate(117deg);
+}
+
+.circle .fill.progress70,
+.mask.progress70 {
+    transform: rotate(126deg);
+}
+
+.circle .fill.progress75,
+.mask.progress75 {
+    transform: rotate(135deg);
+}
+
+.circle .fill.progress80,
+.mask.progress80 {
+    transform: rotate(144deg);
+}
+
+.circle .fill.progress85,
+.mask.progress85 {
+    transform: rotate(153deg);
+}
+
+.circle .fill.progress90,
+.mask.progress90 {
+    transform: rotate(162deg);
+}
+
+.circle .fill.progress95,
+.mask.progress95 {
+    transform: rotate(171deg);
+}
+
+.circle .fill.progress100,
+.mask.progress100 {
+    transform: rotate(180deg);
+}

@@ -34,7 +34,7 @@ parser.addArgument(['--password'], {
 });
 
 const args = parser.parseArgs();
-const validTypes = ['CV', 'ICON_LIST'];
+const validTypes = ['CV', 'ICON_LIST', 'TOOL_LIST'];
 
 function jsonFile(title: string) {
     return path.join(process.cwd(), `database/import/content/${title}.json`);
@@ -108,6 +108,23 @@ function createContent(title: string, type: string): any {
                 entries: [
                     { icon: '<clr-icon-shape>', paragraphs: ['<Absatz>', '<Absatz>'] },
                     { icon: '<clr-icon-shape2>', paragraphs: ['<Absatz>', '<Absatz>'] }
+                ]
+            };
+        case 'TOOL_LIST':
+            return {
+                sectionTitle: title,
+                contentType: type,
+                groups: [
+                    {
+                        label: '<group-name>',
+                        entries: [
+                            {
+                                title: '<title>',
+                                percentage: 99,
+                                description: '<description>'
+                            }
+                        ]
+                    }
                 ]
             };
     }

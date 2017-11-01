@@ -26,6 +26,8 @@ import { SecurityInterceptor } from './security/SecurityInterceptor';
 import { AuthenticationService } from './security/authentication.service';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { IconListComponent } from './icon-list/icon-list.component';
+import { ToolListComponent } from './tool-list/tool-list.component';
+import { CircleProgressComponent } from './circle-progress/circle-progress.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +46,9 @@ import { IconListComponent } from './icon-list/icon-list.component';
         ErrorComponent,
         AsciiViewComponent,
         ForbiddenComponent,
-        IconListComponent
+        IconListComponent,
+        ToolListComponent,
+        CircleProgressComponent
     ],
     imports: [BrowserModule, AppRoutingModule, ClarityModule.forRoot(), ReactiveFormsModule, HttpClientModule],
     providers: [

@@ -1,0 +1,11 @@
+<div class="circle">
+  <div class="mask" [ngClass]="progressClass">
+    <div class="fill" [ngClass]="progressClass"></div>
+  </div>
+  <div class="mask">
+    <div class="fill" [ngClass]="progressClass"></div>
+  </div>
+  <div class="inset">
+    {{normalizedProgress}}%
+  </div>
+</div>

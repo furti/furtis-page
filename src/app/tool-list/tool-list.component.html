@@ -1,0 +1,28 @@
+<h3>{{section.title}}</h3>
+<fuu-about-me-back-button></fuu-about-me-back-button>
+
+
+<div class="tool-group" *ngFor="let group of section.content.groups">
+  <h4>{{group.label}}</h4>
+
+  <div class="tool-entries">
+    <div class="card" *ngFor="let entry of group.entries">
+
+      <div class="card-block">
+        <div class="card-media-block">
+          <fuu-circle-progress [progress]="entry.percentage"></fuu-circle-progress>
+
+          <div class="card-media-description">
+            <b class="card-media-title">
+              {{entry.title}}
+            </b>
+          </div>
+        </div>
+
+        <div class="card-text">
+          {{entry.description}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

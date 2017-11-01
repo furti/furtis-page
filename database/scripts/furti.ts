@@ -97,7 +97,7 @@ export class Furti {
                 }
             )
             .then(() => {
-                console.log('Updated content for section ' + sectionContent.title);
+                console.log('Updated content for section ' + sectionContent.sectionTitle);
 
                 if (options.autoclose) {
                     return this.close();

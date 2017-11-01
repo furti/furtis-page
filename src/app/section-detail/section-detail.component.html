@@ -5,5 +5,7 @@
 
     <fuu-icon-list [section]="section" *ngSwitchCase="'ICON_LIST'"></fuu-icon-list>
 
+    <fuu-tool-list [section]="section" *ngSwitchCase="'TOOL_LIST'"></fuu-tool-list>
+
     <div *ngSwitchDefault>Component for {{section.content.contentType}} not found</div>
 </ng-container>

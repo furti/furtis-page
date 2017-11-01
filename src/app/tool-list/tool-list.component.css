@@ -1,0 +1,12 @@
+.tool-entries {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 44%;
+    margin-left: 4%;
+}
