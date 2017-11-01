@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+clr-icon {
+    width: 200px;
+    height: 200px;
+}

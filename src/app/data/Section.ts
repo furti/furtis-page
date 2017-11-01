@@ -1,8 +1,7 @@
 import { ProjectListContent } from './ProjectListContent';
 import { CVContent } from './CVContent';
 
-export interface Section<CONTENT_TYPE = CVContent | ProjectListContent>
-{
+export interface Section<CONTENT_TYPE = CVContent | ProjectListContent> {
     id: number;
 
     /**
@@ -37,8 +36,7 @@ export interface Section<CONTENT_TYPE = CVContent | ProjectListContent>
      */
     snippetText: string;
 
-
-    authenticationRequired: boolean;
+    requiredRoles?: string[];
 
     content: CONTENT_TYPE;
 }

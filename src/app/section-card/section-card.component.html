@@ -7,8 +7,9 @@
     </div>
 
     <div class="card-footer">
-        <button class="btn btn-sm btn-link" [routerLink]="[section.id]">mehr...
+        <button class="btn btn-sm btn-link" [routerLink]="[section.id]" [disabled]="forbidden">mehr...
             <span *ngIf="authenticationRequired">(Anmeldung erforderlich)</span>
+            <span *ngIf="forbidden">(nicht erlaubt)</span>
         </button>
     </div>
 </div>

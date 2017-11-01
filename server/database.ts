@@ -54,12 +54,8 @@ export class Database {
                     title: section.title,
                     image: section.image,
                     snippetText: section.snippetText,
-                    authenticationRequired: false
+                    requiredRoles: section.requiredRoles
                 };
-
-                if (section.requiredRoles && section.requiredRoles.length > 0) {
-                    response.authenticationRequired = true;
-                }
 
                 return response;
             })

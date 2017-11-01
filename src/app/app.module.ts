@@ -24,6 +24,7 @@ import { AsciiViewComponent } from './ascii-view/ascii-view.component';
 import { SecurityService } from './security/security.service';
 import { SecurityInterceptor } from './security/SecurityInterceptor';
 import { AuthenticationService } from './security/authentication.service';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import { AuthenticationService } from './security/authentication.service';
         FuuDatePipe,
         AboutMeBackButtonComponent,
         ErrorComponent,
-        AsciiViewComponent
+        AsciiViewComponent,
+        ForbiddenComponent
     ],
     imports: [BrowserModule, AppRoutingModule, ClarityModule.forRoot(), ReactiveFormsModule, HttpClientModule],
     providers: [

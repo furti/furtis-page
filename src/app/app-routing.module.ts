@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SectionDetailComponent } from './section-detail/section-detail.component';
 import { ErrorComponent } from './error/error.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 const routes: Routes = [
     {
@@ -27,13 +28,15 @@ const routes: Routes = [
     {
         path: 'error',
         component: ErrorComponent
+    },
+    {
+        path: 'forbidden',
+        component: ForbiddenComponent
     }
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(routes)
-    ],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
