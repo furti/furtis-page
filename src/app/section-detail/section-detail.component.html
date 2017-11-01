@@ -2,5 +2,8 @@
 
 <ng-container [ngSwitch]="section.content.contentType" *ngIf="section">
     <fuu-cv [section]="section" *ngSwitchCase="'CV'"></fuu-cv>
+
+    <fuu-icon-list [section]="section" *ngSwitchCase="'ICON_LIST'"></fuu-icon-list>
+
     <div *ngSwitchDefault>Component for {{section.content.contentType}} not found</div>
 </ng-container>

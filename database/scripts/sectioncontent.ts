@@ -34,7 +34,7 @@ parser.addArgument(['--password'], {
 });
 
 const args = parser.parseArgs();
-const validTypes = ['CV'];
+const validTypes = ['CV', 'ICON_LIST'];
 
 function jsonFile(title: string) {
     return path.join(process.cwd(), `database/import/content/${title}.json`);
@@ -50,10 +50,14 @@ function validateType(type: string): void {
     }
 }
 
-function processImage(section: any): Promise<any> {
-    return DataURI(section.basedata.image).then((encoded: string) => {
-        section.basedata.image = encoded;
-    });
+function processSection(section: any): Promise<any> {
+    if (section.contentType === 'CV') {
+        return DataURI(section.basedata.image).then((encoded: string) => {
+            section.basedata.image = encoded;
+        });
+    }
+
+    return Promise.resolve();
 }
 function createContent(title: string, type: string): any {
     switch (type) {
@@ -97,6 +101,15 @@ function createContent(title: string, type: string): any {
                     }
                 ]
             };
+        case 'ICON_LIST':
+            return {
+                sectionTitle: title,
+                contentType: type,
+                entries: [
+                    { icon: '<clr-icon-shape>', paragraphs: ['<Absatz>', '<Absatz>'] },
+                    { icon: '<clr-icon-shape2>', paragraphs: ['<Absatz>', '<Absatz>'] }
+                ]
+            };
     }
 }
 
@@ -129,7 +142,7 @@ if (args.new) {
         }
 
         const sectionContent = JSON.parse(content);
-        processImage(sectionContent).then(() => {
+        processSection(sectionContent).then(() => {
             const furti = new Furti(args.user, args.password);
 
             furti.connect().then(db => {

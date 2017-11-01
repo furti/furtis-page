@@ -1,0 +1,14 @@
+<h3>{{section.title}}</h3>
+<fuu-about-me-back-button></fuu-about-me-back-button>
+
+<div class="list">
+  <div class="card" *ngFor="let entry of section.content.entries">
+    <clr-icon [attr.shape]="entry.icon"></clr-icon>
+
+    <div class="card-block">
+      <p class="card-text" *ngFor="let paragraph of entry.paragraphs">
+        {{paragraph}}
+      </p>
+    </div>
+  </div>
+</div>

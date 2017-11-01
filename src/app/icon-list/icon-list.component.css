@@ -1,0 +1,17 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    max-width: 950px;
+}
+
+clr-icon {
+    width: 100px;
+    height: 100px;
+    margin: 24px;
+}

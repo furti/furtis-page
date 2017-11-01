@@ -25,6 +25,7 @@ import { SecurityService } from './security/security.service';
 import { SecurityInterceptor } from './security/SecurityInterceptor';
 import { AuthenticationService } from './security/authentication.service';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { IconListComponent } from './icon-list/icon-list.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
         AboutMeBackButtonComponent,
         ErrorComponent,
         AsciiViewComponent,
-        ForbiddenComponent
+        ForbiddenComponent,
+        IconListComponent
     ],
     imports: [BrowserModule, AppRoutingModule, ClarityModule.forRoot(), ReactiveFormsModule, HttpClientModule],
     providers: [

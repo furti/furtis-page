@@ -1,7 +1,8 @@
+import { IconListContent } from './IconListContent';
 import { ProjectListContent } from './ProjectListContent';
 import { CVContent } from './CVContent';
 
-export interface Section<CONTENT_TYPE = CVContent | ProjectListContent> {
+export interface Section<CONTENT_TYPE = CVContent | ProjectListContent | IconListContent> {
     id: number;
 
     /**
