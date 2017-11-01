@@ -6,7 +6,9 @@
         <div class="event" *ngFor="let event of section.content.events">
             <div class="event-heading">
                 <b class="event-title">{{event.title}}</b>
-                <span class="dates">{{event.date.from | fuudate}} - {{event.date.to | fuudate}}</span>
+                <span class="dates">
+                    <clr-icon shape="calendar"></clr-icon>
+                    {{event.date.from | fuudate}} - {{event.date.to | fuudate}}</span>
             </div>
             <div class="event-content">
                 <p class="p4">{{event.subtitle}}</p>
