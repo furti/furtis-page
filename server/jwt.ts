@@ -1,3 +1,4 @@
+import { AuthenticatedRequest, RoleSupplier } from './jwt';
 import { User } from './../src/app/security/User';
 import { Request, Response } from 'express';
 import { createHmac } from 'crypto';
@@ -33,6 +34,12 @@ export class Authentication implements User {
     }
 }
 
+class Anonymous extends Authentication {
+    constructor() {
+        super('anonymous', [], new Date().getTime() + 1000 * 60, 'Anonymous');
+    }
+}
+
 function parseToken(token: string): Authentication {
     const parts = token.split('.');
 
@@ -65,27 +72,67 @@ export function createSignature(base64Header: string, base64Payload: string): st
     return hmac.digest('base64');
 }
 
-export function isAuthenticated(request: AuthenticatedRequest, response: Response, next: any): void {
-    const token = request.header('Authorization');
+export type AuthenticationRequired<R extends AuthenticatedRequest> = (request: R) => boolean;
+export type AuthenticationMiddleware<R extends AuthenticatedRequest> = (
+    request: R,
+    response: Response,
+    next: any
+) => void;
 
-    if (!token || token.trim().length === 0) {
-        console.log('No token');
+export function isAuthenticated<R extends AuthenticatedRequest>(
+    authenicationRequired: AuthenticationRequired<R>
+): AuthenticationMiddleware<R> {
+    return (request: R, response: Response, next: any) => {
+        // If no authentication required --> proceed with the request
+        if (!authenicationRequired(request)) {
+            request.user = new Anonymous();
 
-        response.status(401).send('Um auf die Daten zuzugreifen, ist eine Anmeldung erforderlich.');
+            next();
 
-        return;
-    }
+            return;
+        }
 
-    try {
-        request.user = parseToken(token);
-    } catch (e) {
-        console.log(`Got Error while parsing`, e.message);
-        response.status(401).send('Um auf die Daten zuzugreifen, ist eine Anmeldung erforderlich.');
+        const token = request.header('Authorization');
 
-        return;
-    }
+        if (!token || token.trim().length === 0) {
+            console.log('No token');
 
-    next();
+            response.status(401).send('Um auf die Daten zuzugreifen, ist eine Anmeldung erforderlich.');
+
+            return;
+        }
+
+        try {
+            request.user = parseToken(token);
+        } catch (e) {
+            console.log(`Got Error while parsing`, e.message);
+            response.status(401).send('Um auf die Daten zuzugreifen, ist eine Anmeldung erforderlich.');
+
+            return;
+        }
+
+        next();
+    };
+}
+
+export type RoleSupplier<R extends AuthenticatedRequest> = (request: R) => string[];
+
+export function hasAnyRole<R extends AuthenticatedRequest>(roleSupplier: RoleSupplier<R>): AuthenticationMiddleware<R> {
+    return (request: R, response: Response, next: any) => {
+        if (!request.user) {
+            response.status(500).send('Da ist kein User im Request.');
+        }
+
+        const requiredRoles = roleSupplier(request);
+
+        if (request.user.hasAnyRole(requiredRoles)) {
+            next();
+
+            return;
+        }
+
+        response.status(403).send('Du besitzt nicht die benötigten Berechtigungen, um die Daten sehen zu können.');
+    };
 }
 
 export function createToken(sub: string, name: string, roles: string[]): string {

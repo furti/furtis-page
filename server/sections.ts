@@ -1,12 +1,13 @@
 import { Router, Request, Response } from 'express';
 import { Database } from './database';
-import { isAuthenticated, AuthenticatedRequest } from './jwt';
+import { isAuthenticated, hasAnyRole, AuthenticatedRequest } from './jwt';
 
 const router = Router();
 const client = new Database();
 
 interface SectionRequest extends AuthenticatedRequest {
     sectionId: number;
+    section: any;
 }
 
 function handleError(response: Response, reason: any) {
@@ -15,6 +16,19 @@ function handleError(response: Response, reason: any) {
     const message = typeof reason === 'object' ? reason.message : reason;
 
     response.status(500).send(message);
+}
+
+function loadSection(req: SectionRequest, res: Response, next: any): void {
+    client
+        .getSection(req.sectionId)
+        .then(section => {
+            req.section = section;
+
+            next();
+        })
+        .catch(reason => {
+            handleError(res, reason);
+        });
 }
 
 router.get('/', (req, res) => {
@@ -28,24 +42,17 @@ router.get('/', (req, res) => {
         });
 });
 
-router.get('/:id', isAuthenticated, (req: SectionRequest, res) => {
-    return client
-        .getSection(req.sectionId)
-        .then(section => {
-            if (!req.user.hasAnyRole(section.requiredRoles)) {
-                res.status(403).send('Du besitzt nicht die benötigten Berechtigungen, um die Daten sehen zu können.');
+router.get(
+    '/:id',
+    loadSection,
+    isAuthenticated<SectionRequest>(req => req.section.requiredRoles && req.section.requiredRoles.length > 0),
+    hasAnyRole<SectionRequest>(req => req.section.requiredRoles),
+    (req: SectionRequest, res) => {
+        delete req.section.requiredRoles;
 
-                return;
-            }
-
-            delete section.requiredRoles;
-
-            res.status(200).json(section);
-        })
-        .catch(reason => {
-            handleError(res, reason);
-        });
-});
+        res.status(200).json(req.section);
+    }
+);
 
 router.get('*', (req, res) => {
     res.status(404).send(`URL "${req.originalUrl}" not found!`);
