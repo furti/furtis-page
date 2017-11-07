@@ -5,5 +5,6 @@ export interface IconListContent {
 
 export interface IconListEntry {
     icon: string;
+    title: string;
     paragraphs: string[];
 }

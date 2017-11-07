@@ -106,8 +106,8 @@ function createContent(title: string, type: string): any {
                 sectionTitle: title,
                 contentType: type,
                 entries: [
-                    { icon: '<clr-icon-shape>', paragraphs: ['<Absatz>', '<Absatz>'] },
-                    { icon: '<clr-icon-shape2>', paragraphs: ['<Absatz>', '<Absatz>'] }
+                    { icon: '<clr-icon-shape>', title: '<title>', paragraphs: ['<Absatz>', '<Absatz>'] },
+                    { icon: '<clr-icon-shape2>', title: '<title>', paragraphs: ['<Absatz>', '<Absatz>'] }
                 ]
             };
         case 'TOOL_LIST':
