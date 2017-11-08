@@ -1,0 +1,32 @@
+<h3>{{section.title}}</h3>
+<fuu-about-me-back-button></fuu-about-me-back-button>
+
+<div class="project-container">
+  <div class="card" *ngFor="let project of section.content.projects">
+    <div class="card-block">
+      <div class="card-media-block">
+        <img src="{{project.thumbnail}}" *ngIf="project.thumbnail" class="card-media-image">
+        <div *ngIf="!project.thumbnail" class="card-media-image thumbnail-dummy"></div>
+
+        <div class="card-media-description">
+          <span class="card-media-title">
+            <b>{{project.name}}</b>
+          </span>
+          <span class="card-media-text" *ngIf="project.slogan">
+            {{project.slogan}}
+          </span>
+        </div>
+      </div>
+
+      <div class="card-text">
+        {{project.description}}
+      </div>
+
+    </div>
+
+    <div class="card-footer">
+      <a href="{{project.githubLink}}" *ngIf="project.githubLink" target="_blank" class="card-link">Auf Github ansehen</a>
+      <a href="{{project.pageLink}}" *ngIf="project.pageLink" target="_blank" class="card-link">Webseite besuchen</a>
+    </div>
+  </div>
+</div>

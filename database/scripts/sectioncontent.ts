@@ -34,7 +34,7 @@ parser.addArgument(['--password'], {
 });
 
 const args = parser.parseArgs();
-const validTypes = ['CV', 'ICON_LIST', 'TOOL_LIST'];
+const validTypes = ['CV', 'ICON_LIST', 'TOOL_LIST', 'PROJECT_LIST'];
 
 function jsonFile(title: string) {
     return path.join(process.cwd(), `database/import/content/${title}.json`);
@@ -55,6 +55,26 @@ function processSection(section: any): Promise<any> {
         return DataURI(section.basedata.image).then((encoded: string) => {
             section.basedata.image = encoded;
         });
+    }
+
+    if (section.contentType === 'PROJECT_LIST') {
+        const promises: Promise<any>[] = [];
+
+        section.projects.forEach(project => {
+            if (project.thumbnail) {
+                promises.push(
+                    DataURI(project.thumbnail).then((encoded: string) => {
+                        project.thumbnail = encoded;
+                    })
+                );
+            }
+        });
+
+        if (promises.length === 0) {
+            return Promise.resolve();
+        }
+
+        return Promise.all(promises);
     }
 
     return Promise.resolve();
@@ -124,6 +144,21 @@ function createContent(title: string, type: string): any {
                                 description: '<description>'
                             }
                         ]
+                    }
+                ]
+            };
+        case 'PROJECT_LIST':
+            return {
+                sectionTitle: title,
+                contentType: type,
+                projects: [
+                    {
+                        name: '<name>',
+                        slogan: '<slogan>',
+                        description: '<description>',
+                        thumbnail: '<path to image>',
+                        githubLink: '<link>',
+                        pageLink: '<link>'
                     }
                 ]
             };

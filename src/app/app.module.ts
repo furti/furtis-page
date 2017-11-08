@@ -28,6 +28,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { IconListComponent } from './icon-list/icon-list.component';
 import { ToolListComponent } from './tool-list/tool-list.component';
 import { CircleProgressComponent } from './circle-progress/circle-progress.component';
+import { ProjectListComponent } from './project-list/project-list.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import { CircleProgressComponent } from './circle-progress/circle-progress.compo
         ForbiddenComponent,
         IconListComponent,
         ToolListComponent,
-        CircleProgressComponent
+        CircleProgressComponent,
+        ProjectListComponent
     ],
     imports: [BrowserModule, AppRoutingModule, ClarityModule.forRoot(), ReactiveFormsModule, HttpClientModule],
     providers: [
