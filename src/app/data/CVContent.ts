@@ -15,6 +15,7 @@ export interface CVBasedata {
     phone: string;
     email: string;
     homepage: string;
+    driverLicence: string;
 }
 
 export interface Address {
